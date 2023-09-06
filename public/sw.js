@@ -10,6 +10,15 @@ self.addEventListener('widgetinstall', (event) => {
     event.waitUntil(updateWidget(event));
 });
 
+// When there is a notification
+self.addEventListener('push', (event) => {
+    event.waitUntil(
+      registration.showNotification("Hello!", {
+        body: "This is a push notification!",
+      })
+    );
+  });
+
 // When widget is shown, update content to ensure it is up-to-date.
 self.addEventListener('widgetresume', (event) => {
     event.waitUntil(updateWidget(event));
